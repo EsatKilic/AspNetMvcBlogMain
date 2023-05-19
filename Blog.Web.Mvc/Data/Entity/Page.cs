@@ -3,10 +3,12 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using Blog.Web.Mvc.Data.Entity.Abstract;
 
 namespace Blog.Web.Mvc.Data.Entity
 {
-    public class Page
+    public class Page : AuditEntity
+
     {
         [Required]
         public int Id { get; set; }

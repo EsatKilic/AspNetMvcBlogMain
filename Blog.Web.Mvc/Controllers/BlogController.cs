@@ -1,13 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Blog.Web.Mvc.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Web.Mvc.Controllers
 {
     public class BlogController : Controller
     {
-        public IActionResult Search(string query, int page)
+        private readonly AppDbContext _db;
+
+        public BlogController(AppDbContext db)
         {
-            return View();
+            _db = db;
         }
+        
+            public IActionResult Search(string query, int page = 1)
+            {
+                var posts = _db.Posts
+                    .Include(p => p.Category)
+                    .Where(e => e.Title.Contains(query))
+                    .Skip((page - 1) * 10).Take(10)
+                    .ToList();
+
+                ViewBag.Query = query;
+
+                return View(posts);
+            }
+        
         public IActionResult Detail(int id)
         {
             return View();

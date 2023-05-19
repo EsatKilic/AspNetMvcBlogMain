@@ -21,10 +21,10 @@ namespace Blog.Web.Mvc.Data
         {
             modelBuilder.Entity<Category>().HasData(new List<Category>
             {
-                new() {Id = 1 , Name = "Innovation" , Description="find new things and discover the world"},
-                new() {Id = 2 , Name = "Software" , Description="guide technological developments"},
-                new() {Id = 3 , Name = "Social" , Description="use social media and effect our lifes"},
-                new() {Id = 4 , Name = "Trends" , Description="popular things"},
+                new() {Id = 1 , Name = "Innovation" , Description="find new things and discover the world", Slug="innovation"},
+                new() {Id = 2 , Name = "Software" , Description="guide technological developments", Slug="software"},
+                new() {Id = 3 , Name = "Social" , Description="use social media and effect our lifes", Slug="social"},
+                new() {Id = 4 , Name = "Trends" , Description="popular things", Slug="trends"},
             });
                 
         }
@@ -45,10 +45,10 @@ namespace Blog.Web.Mvc.Data
         {
             modelBuilder.Entity<Post>().HasData(new List<Post>
             {
-                new() {Id = 1 , UserId = 1 , Title= "Innovation" , Content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " },
-                new() {Id = 2 , UserId = 2 , Title= "Software" , Content="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
-                new() {Id = 3 , UserId = 3 , Title ="Social" , Content="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. " },
-                new() {Id = 4 , UserId = 4 , Title ="Trends" , Content="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga." },
+                new() {Id = 1 , UserId = 1 , Title= "Innovation" , Content="Lorem ipsum dolor sit amet " },
+                new() {Id = 2 , UserId = 2 , Title= "Software" , Content="Sed ut perspiciatis unde " },
+                new() {Id = 3 , UserId = 3 , Title ="Social" , Content="But I must explain to you  " },
+                new() {Id = 4 , UserId = 4 , Title ="Trends" , Content="At vero eos et accusamus et " },
             });
 
         }

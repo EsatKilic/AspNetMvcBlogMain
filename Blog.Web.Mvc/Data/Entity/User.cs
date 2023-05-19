@@ -4,9 +4,11 @@ using NuGet.Protocol;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using Blog.Web.Mvc.Data.Entity.Abstract;
+
 namespace Blog.Web.Mvc.Data.Entity
 {
-    public class User
+    public class User : AuditEntity
     {
         [Required]
         public int Id { get; set; }
