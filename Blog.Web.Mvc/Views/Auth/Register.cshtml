@@ -1,15 +1,13 @@
-﻿@{
+﻿@model RegisterViewModel
+@{
     ViewData["Title"] = "Auth - Register";
 }
-
-@model RegisterViewModel
 
 <div class="container">
     <div class="row">
         <div class="col-4 offset-4">
             <h1>Sign up</h1>
             <form asp-action="Register">
-
                 <div class="mb-3">
                     <label for="email" class="form-label">Name</label>
                     <input class="form-control" asp-for="Name">

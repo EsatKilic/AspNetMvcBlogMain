@@ -1,9 +1,5 @@
-﻿using System;
+﻿using Blog.Web.Mvc.Data.Entity.Abstract;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.Metrics;
-using System.Security.Principal;
-using Blog.Web.Mvc.Data.Entity.Abstract;
 
 namespace Blog.Web.Mvc.Data.Entity
 {
@@ -14,8 +10,12 @@ namespace Blog.Web.Mvc.Data.Entity
         [Required]
         public int PostId { get; set; }
 
+        public Post Post { get; set; }
+
         [Required]
         public int UserId { get; set; }
+
+        public User User { get; set; }
 
         [Required]
         public string? Comment { get; set; }

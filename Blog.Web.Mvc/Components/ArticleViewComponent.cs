@@ -1,22 +1,24 @@
 ﻿using Blog.Web.Mvc.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Web.Mvc.Components;
 
 public class ArticleViewComponent : ViewComponent
 {
-    private AppDbContext db { get; set; }
+    private readonly AppDbContext _db;
+
     public ArticleViewComponent(AppDbContext db)
     {
-        this.db = db;
+        _db = db;
     }
 
     public async Task<IViewComponentResult> InvokeAsync()
-    
-    { 
-        return View(db.Categories.ToList()); 
-    
-    }
+    {
+        var posts = _db.Posts
+            .Include(e => e.Categories)
+            .Where(e => e.IsFeatured).ToList();
 
-	
+        return View(posts);
+    }
 }

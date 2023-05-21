@@ -1,10 +1,6 @@
-﻿using Microsoft.Build.Framework;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using NuGet.Protocol;
+﻿using Blog.Web.Mvc.Data.Entity.Abstract;
+using Microsoft.Build.Framework;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer;
-using Blog.Web.Mvc.Data.Entity.Abstract;
 
 namespace Blog.Web.Mvc.Data.Entity
 {
@@ -12,22 +8,22 @@ namespace Blog.Web.Mvc.Data.Entity
     {
         [Required]
         public int Id { get; set; }
+
         [Required]
         [Column(TypeName = "nvarchar(200)")]
         public string Email { get; set; }
+
         [Required]
         [Column(TypeName = "nvarchar(100)")]
         public string Password { get; set; }
-        [Required]
-        [Column(TypeName = "nvarchar(100)")]
-        public string Name { get; set; }
-        [Required]
-        [Column(TypeName = "nvarchar(100)")]
-        public string City { get; set; }
 
-        [Required]
-        [Column(TypeName = "nvarchar(20)")]
-        public int  Phone { get; set; }
-        
+        [Column(TypeName = "nvarchar(100)")]
+        public string? Name { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string? City { get; set; }
+
+        [Column(TypeName = "varchar(20)")]
+        public string? Phone { get; set; }
     }
 }

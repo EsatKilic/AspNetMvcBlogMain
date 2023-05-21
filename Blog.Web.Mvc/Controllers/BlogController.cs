@@ -12,20 +12,21 @@ namespace Blog.Web.Mvc.Controllers
         {
             _db = db;
         }
-        
-            public IActionResult Search(string query, int page = 1)
-            {
-                var posts = _db.Posts
-                    .Include(p => p.Category)
-                    .Where(e => e.Title.Contains(query))
-                    .Skip((page - 1) * 10).Take(10)
-                    .ToList();
 
-                ViewBag.Query = query;
+        public IActionResult Search(string query, int page = 1)
+        {
+            var posts = _db.Posts
+                .Include(p => p.Categories)
+                .Where(e => e.Title.Contains(query))
+                .Skip((page - 1) * 10).Take(10)
+                .ToList();
 
-                return View(posts);
-            }
-        
+            ViewBag.Query = query;
+
+            return View(posts);
+        }
+
+        [Route("blog/{slug}", Name = "Blog")]
         public IActionResult Detail(int id)
         {
             return View();

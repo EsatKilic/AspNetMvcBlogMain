@@ -1,4 +1,4 @@
-﻿@model List<Category>
+﻿@model NavbarViewModel
 
 <header class="header-top bg-grey justify-content-center">
     <div class="container">
@@ -22,37 +22,29 @@
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Blog
+                                    Kategoriler
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item" asp-controller="Blog" asp-action="Search">Search</a>
-                                    <a class="dropdown-item" asp-controller="Blog" asp-action="Detail">Detail</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Category
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-
-                                    @foreach (var item in Model)
+                                    @foreach (var item in Model.Categories)
                                     {
-                                        <a class="dropdown-item" asp-controller="Category" asp-route-slug="@item.Name">@item.Name</a>
+                                        <a class="dropdown-item" asp-route="Category" asp-route-slug="@item.Slug">@item.Name</a>
                                     }
-
-                                    
                                 </div>
                             </li>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Page
+                                    Sayfalar
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item" asp-controller="Page" asp-action="Detail">Detail</a>
+                                    @foreach (var item in Model.Pages)
+                                    {
+                                        <a class="dropdown-item" asp-route="Page" asp-route-slug="@item.Slug">@item.Title</a>
+                                    }
                                 </div>
                             </li>
-                             <li class="nav-item dropdown">
+
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Auth
                                 </a>
@@ -91,13 +83,3 @@
         </div>
     </div>
 </header>
-
-
-@*<ul class="navbar-nav">
-	@foreach (var item in Model)
-	{
-		<li class="nav-item">
-			<a class="nav-link" href="@item.Url">@item.Title</a>
-		</li>
-	}
-</ul>*@

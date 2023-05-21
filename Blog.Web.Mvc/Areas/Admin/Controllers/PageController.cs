@@ -3,7 +3,7 @@
 namespace Blog.Web.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class Page : Controller
+    public class PageController : Controller
     {
         public IActionResult Index()
         {
