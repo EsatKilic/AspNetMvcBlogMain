@@ -28,5 +28,9 @@ namespace Blog.Web.Mvc.Data.Entity
         public bool IsFeatured { get; set; }
 
         public List<Category> Categories { get; set; } = new();
+
+        public List<PostImage>? PostImage { get; set; }
+
+        public List<PostComment>? PostComment { get; set; }
     }
 }

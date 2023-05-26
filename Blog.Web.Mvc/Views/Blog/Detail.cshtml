@@ -14,12 +14,12 @@
                             <a class="post-category font-extra text-color text-uppercase font-sm letter-spacing-1" href="#">lifestyle</a>
                         </div>
                         <h2 class="post-title mt-2">
-                           Lifestyle
+                            @Model.Title
                         </h2>
 
                         <div class="post-meta">
                             <span class="text-uppercase font-sm letter-spacing-1 mr-3">by Liam</span>
-                            <span class="text-uppercase font-sm letter-spacing-1">January 17,2019</span>
+                            <span class="text-uppercase font-sm letter-spacing-1">@Model.CreatedAt.ToShortDateString()</span>
                         </div>
                         <div class="post-featured-image mt-5">
                             <img src="/images/fashion/bg-banner.jpg" class="img-fluid w-100" alt="featured-image">
@@ -65,7 +65,7 @@
 
                         <div class="tags-share-box center-box d-flex text-center justify-content-between border-top border-bottom py-3">
 
-                            <span class="single-comment-o"><i class="fa fa-comment-o"></i>0 comment</span>
+                            <span class="single-comment-o"><i class="fa fa-comment-o"></i>@ViewBag.PostComments.Count Comment</span>
 
                             <div class="post-share">
                                 <span class="count-number-like">2</span>
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="author-content pl-4">
-                        <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">Themefisher</a></h4>
+                        <h4 class="mb-3"><a href="#" title="" rel="author" class="text-capitalize">@ViewBag.User.Name</a></h4>
                         <p>Hey there. My name is Liam. I was born with the love for traveling. I also love taking photos with my phone in order to capture moment..</p>
 
                         <a target="_blank" class="author-social" href="#"><i class="ti-facebook"></i></a>
@@ -100,18 +100,28 @@
                     </div>
                 </div>
                 <nav class="post-pagination clearfix border-top border-bottom py-4">
-                    <div class="prev-post">
-                        <a href="blog-single.html">
-                            <span class="text-uppercase font-sm letter-spacing">Next</span>
-                            <h4 class="mt-3"> Intel’s new smart glasses actually look good</h4>
-                        </a>
-                    </div>
-                    <div class="next-post">
-                        <a href="blog-single.html">
-                            <span class="text-uppercase font-sm letter-spacing">Previous</span>
-                            <h4 class="mt-3">Free Two-Hour Delivery From Whole Foods</h4>
-                        </a>
-                    </div>
+                    @{
+                        if (ViewBag.PreviousPost != null)
+                        {
+                            int previous = ViewBag.PreviousPost.Id;
+                            <div class="prev-post">
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@previous">
+                                    <span class="text-uppercase font-sm letter-spacing">Previous</span>
+                                    <h4 class="mt-3"> @ViewBag.PreviousPost.Title</h4>
+                                </a>
+                            </div>
+                        }
+                        if (ViewBag.NextPost != null)
+                        {
+                            int next = ViewBag.NextPost.Id;
+                            <div class="next-post">
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@next">
+                                    <span class="text-uppercase font-sm letter-spacing">Next</span>
+                                    <h4 class="mt-3">  @ViewBag.NextPost.Title</h4>
+                                </a>
+                            </div>
+                        }
+                    }
                 </nav>
                 <div class="related-posts-block mt-5">
                     <h3 class="news-title mb-4 text-center">
@@ -158,38 +168,31 @@
                 </div>
 
                 <div class="comment-area my-5">
-                    <h3 class="mb-4 text-center">2 Comments</h3>
-                    <div class="comment-area-box media">
-                        <img alt="" src="/images/blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2">
+                    <h3 class="mb-4 text-center">@ViewBag.PostComments.Count Comments</h3>
 
-                        <div class="media-body ml-4">
-                            <h4 class="mb-0">Micle harison </h4>
-                            <span class="date-comm font-sm text-capitalize text-color"><i class="ti-time mr-2"></i>June 7, 2019 </span>
+                    @{
+                        if (ViewBag.PostComments.Count != 0)
+                        {
+                            @foreach (var item in ViewBag.PostComments)
+                            {
+                                <div class="comment-area-box media">
+                                    <img alt="" src="/images/blog-user-2.jpg" class="img-fluid float-left mr-3 mt-2">
 
-                            <div class="comment-content mt-3">
-                                <p>Lorem ipsum dolor sit amet, usu ut perfecto postulant deterruisset, libris causae volutpat at est, ius id modus laoreet urbanitas. Mel ei delenit dolores.</p>
-                            </div>
-                            <div class="comment-meta mt-4 mt-lg-0 mt-md-0">
-                                <a href="#" class="text-underline ">Reply</a>
-                            </div>
-                        </div>
-                    </div>
+                                    <div class="media-body ml-4">
+                                        <h4 class="mb-0"> @item.User.Name </h4>
+                                        <span class="date-comm font-sm text-capitalize text-color"><i class="ti-time mr-2"></i> @item.CreatedAt </span>
 
-                    <div class="comment-area-box media mt-5">
-                        <img alt="" src="/images/blog-user-3.jpg" class="mt-2 img-fluid float-left mr-3">
-
-                        <div class="media-body ml-4">
-                            <h4 class="mb-0 ">John Doe </h4>
-                            <span class="date-comm font-sm text-capitalize text-color"><i class="ti-time mr-2"></i>June 7, 2019 </span>
-
-                            <div class="comment-content mt-3">
-                                <p>Some consultants are employed indirectly by the client via a consultancy staffing company. </p>
-                            </div>
-                            <div class="comment-meta mt-4 mt-lg-0 mt-md-0">
-                                <a href="#" class="text-underline">Reply</a>
-                            </div>
-                        </div>
-                    </div>
+                                        <div class="comment-content mt-3">
+                                            <p>@item.Comment</p>
+                                        </div>
+                                        <div class="comment-meta mt-4 mt-lg-0 mt-md-0">
+                                            <a href="#" class="text-underline ">Reply</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
                 </div>
 
                 <form class="comment-form mb-5 gray-bg p-5" id="comment-form">
@@ -221,9 +224,9 @@
                             <div class="about-author">
                                 <img src="/images/author.jpg" alt="" class="img-fluid">
                             </div>
-                            <h4 class="mb-0 mt-4">Liam Mason</h4>
+                            <h4 class="mb-0 mt-4">@ViewBag.User.Name</h4>
                             <p>Travel Blogger</p>
-                            <p>I'm Liam, last year I decided to quit my job and travel the world. You can follow my journey on this blog!</p>
+                            <p>@ViewBag.User.Name</p>
                             <img src="/images/liammason.png" alt="" class="img-fluid">
                         </div>
 
@@ -270,22 +273,13 @@
                         <div class="sidebar-widget category mb-5">
                             <h4 class="text-center widget-title">Catgeories</h4>
                             <ul class="list-unstyled">
-                                <li class="align-items-center d-flex justify-content-between">
-                                    <a href="#">Innovation</a>
-                                    <span>14</span>
-                                </li>
-                                <li class="align-items-center d-flex justify-content-between">
-                                    <a href="#">Software</a>
-                                    <span>2</span>
-                                </li>
-                                <li class="align-items-center d-flex justify-content-between">
-                                    <a href="#">Social</a>
-                                    <span>10</span>
-                                </li>
-                                <li class="align-items-center d-flex justify-content-between">
-                                    <a href="#">Trends</a>
-                                    <span>5</span>
-                                </li>
+                                @foreach (var item in ViewBag.CategoryNames)
+                                {
+                                    <li class="align-items-center d-flex justify-content-between">
+                                        <a href="#">@item.Name</a>
+                                        <span>@item.Posts.Count</span>
+                                    </li>
+                                }
                             </ul>
                         </div>
 

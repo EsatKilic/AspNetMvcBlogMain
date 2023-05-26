@@ -29,7 +29,27 @@ namespace Blog.Web.Mvc.Controllers
         [Route("blog/{slug}", Name = "Blog")]
         public IActionResult Detail(int id)
         {
-            return View();
+            var categoryNames = _db.Categories.Include(e => e.Posts).ToList();
+            ViewBag.CategoryNames = categoryNames;
+
+            var post = _db.Posts
+                .Include(e => e.Categories)
+                .Include(e => e.PostImage)
+                .Where(e => e.Id == id)
+                .FirstOrDefault();
+
+            ViewBag.PostComments = _db.PostComments
+                .Include(e => e.User)
+                .Where(e => e.PostId == id)
+                .ToList();
+
+            var userId = _db.Posts.Where(e => e.Id == id).FirstOrDefault().UserId;
+            ViewBag.User = _db.Users.Where(e => e.Id == userId).FirstOrDefault();
+
+            ViewBag.NextPost = _db.Posts.OrderBy(e => e.Id).Where(e => e.Id > id).FirstOrDefault();
+            ViewBag.PreviousPost = _db.Posts.OrderBy(e => e.Id).Where(e => e.Id < id).LastOrDefault();
+
+            return View(post);
         }
     }
 }
