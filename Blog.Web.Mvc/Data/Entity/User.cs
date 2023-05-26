@@ -26,6 +26,6 @@ namespace Blog.Web.Mvc.Data.Entity
         [Column(TypeName = "varchar(20)")]
         public string? Phone { get; set; }
 
-      
+        public List<PostComment>? PostComment { get; set; }
     }
 }
