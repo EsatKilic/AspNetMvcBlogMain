@@ -1,4 +1,5 @@
 ﻿using Microsoft.Build.Framework;
+
 namespace Blog.Web.Mvc.Data.Entity
 {
     public class CategoryPost
