@@ -14,6 +14,7 @@ namespace Blog.Web.Mvc.Data
             SeedPostImages(modelBuilder);
             SeedUsers(modelBuilder);
             SeedSettings(modelBuilder);
+            SeedPostComments(modelBuilder);
         }
 
         public static void SeedCategories(ModelBuilder modelBuilder)
