@@ -29,8 +29,8 @@ namespace Blog.Web.Mvc.Data.Entity
 
         public List<Category> Categories { get; set; } = new();
 
-        public List<PostImage>? PostImage { get; set; }
+        public List<PostImage>? PostImages { get; set; } = new();
 
-        public List<PostComment>? PostComment { get; set; }
+        public List<PostComment>? PostComments { get; set; } = new();
     }
 }

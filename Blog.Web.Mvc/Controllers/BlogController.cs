@@ -34,7 +34,7 @@ namespace Blog.Web.Mvc.Controllers
 
             var post = _db.Posts
                 .Include(e => e.Categories)
-                .Include(e => e.PostImage)
+                .Include(e => e.PostImages)
                 .Where(e => e.Id == id)
                 .FirstOrDefault();
 
