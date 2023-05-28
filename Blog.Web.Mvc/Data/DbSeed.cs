@@ -89,8 +89,8 @@ namespace Blog.Web.Mvc.Data
         {
             modelBuilder.Entity<Page>().HasData(new List<Page>
             {
-                new() {Id = 1 , Title = "Discuss" , Context= " text of the printing and typesetting industry." , IsActive=true },
-                new() {Id = 2 , Title = "Write" , Context= " dummy  typesetting industry." , IsActive=true },
+                new() {Id = 1 , Title = "Images" , Context= " text of the printing and typesetting industry." , IsActive=true },
+                new() {Id = 2 , Title = "Articles" , Context= " dummy  typesetting industry." , IsActive=true },
                 new() {Id = 3 , Title = "About Me" , Context= "Lorem Ipsum is simply dummy text of the printing and typesetting industry." , IsActive=true },
 
             });
