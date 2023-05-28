@@ -34,26 +34,13 @@ namespace Blog.Web.Mvc.Data
 
         public static void SeedCategoryPosts(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<CategoryPost>().HasData(new List<CategoryPost>
-            //{
-            //    new() {Id = 1 , CategoryId = 1 , PostId= 1},
-            //    new() {Id = 2 , CategoryId = 2 , PostId= 2},
-            //    new() {Id = 3 , CategoryId = 3 , PostId =3 },
-            //    new() {Id = 4 , CategoryId = 4 , PostId =4 },
-            //});
-
-            //modelBuilder.Entity<Post>().HasData(new List<Post>
-            //{
-            //    new() {
-            //        Id = 1,
-            //        UserId = 1,
-            //        Title= "Innovation",
-            //        Content="Lorem ipsum dolor sit amet ",
-            //        Categories = new List<Category> {
-            //            new() { Id = 1, Name = "Innovation" , Description="find new things and discover the world", Slug="innovation" }
-            //        }
-            //    },
-            //});
+            modelBuilder.Entity<CategoryPost>().HasData(new List<CategoryPost>
+            {
+                new() { CategoryId = 1, PostId = 1 },
+                new() { CategoryId = 2, PostId = 2 },
+                new() { CategoryId = 3, PostId = 3 },
+                new() { CategoryId = 4, PostId = 4 }
+            });
         }
 
         public static void SeedPosts(ModelBuilder modelBuilder)
