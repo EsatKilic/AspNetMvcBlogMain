@@ -17,6 +17,9 @@ namespace Blog.Web.Mvc.Controllers
         [Route("/category/{slug}", Name = "Category")]
         public IActionResult Index(string slug)
         {
+            var categoryNames = _context.Categories.Include(e => e.Posts).ToList();
+            ViewBag.CategoryNames = categoryNames;
+
             var posts = _context.Posts
                 .Include(p => p.Categories)
                 .Where(e => e.Categories.Any(e => e.Slug == slug))

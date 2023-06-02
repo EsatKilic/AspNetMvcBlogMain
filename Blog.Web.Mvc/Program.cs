@@ -1,4 +1,5 @@
 using Blog.Web.Mvc.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -18,6 +19,30 @@ namespace Blog.Web.Mvc
                 var connectionString = builder.Configuration.GetConnectionString("Default");
                 options.UseSqlServer(connectionString);
             });
+
+            builder.Services.AddSession(options =>
+            {
+                options.Cookie.Name = "AuthenticationName";
+
+                // 10 sn tarayýcýda iþlem yapýlmadýðýnda bilgiyi siler
+                //options.IdleTimeout = TimeSpan.FromSeconds(10);
+
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            builder.Services
+               .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie(o =>
+               {
+                   o.Cookie.Name = "AuthenticationName";
+                   o.LoginPath = "/Auth/Login";
+                   o.AccessDeniedPath = "/Auth/AccessDenied";
+               });
+
+            builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<EmailService, EmailService>();
 
             var app = builder.Build();
 
@@ -42,6 +67,8 @@ namespace Blog.Web.Mvc
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

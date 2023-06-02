@@ -38,9 +38,16 @@ namespace Blog.Web.Mvc.Data
             modelBuilder.Entity<CategoryPost>().HasData(new List<CategoryPost>
             {
                 new() { CategoryId = 1, PostId = 1 },
-                new() { CategoryId = 2, PostId = 2 },
+                new() { CategoryId = 1, PostId = 2 },
                 new() { CategoryId = 3, PostId = 3 },
-                new() { CategoryId = 4, PostId = 4 }
+                new() { CategoryId = 4, PostId = 4 },
+                new() { CategoryId = 5, PostId = 5 },
+                new() { CategoryId = 5, PostId = 6 },
+                new() { CategoryId = 6, PostId = 7 },
+                new() { CategoryId = 7, PostId = 8 },
+                new() { CategoryId = 7, PostId = 9 },
+                new() { CategoryId = 2, PostId = 10 },
+                new() { CategoryId = 8, PostId = 11 }
             });
         }
 
@@ -58,6 +65,7 @@ namespace Blog.Web.Mvc.Data
                 new() {Id = 8 , UserId = 4, Slug = "trends-2", Title ="Run The Trends" , Content="Aldus PageMaker including versions of Lorem Ipsum ", IsFeatured = true },
                 new() {Id = 9 , UserId = 5, Slug = "economy", Title ="How Can I Earn Money Easyly?" , Content="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime ", IsFeatured = true },
                 new() {Id = 10 , UserId = 6, Slug = "hobbies", Title ="Just Do Things What You Want" , Content="every pleasure is to be welcomed and every pain avoided.  ", IsFeatured = true },
+                new() {Id = 11 , UserId = 6, Slug = "fobbies", Title ="Run Forest, Run" , Content="welcomed and every pain avoided.  ", IsFeatured = true }
             });
         }
 
