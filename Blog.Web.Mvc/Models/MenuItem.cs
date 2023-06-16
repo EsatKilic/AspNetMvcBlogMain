@@ -1,4 +1,4 @@
-namespace Blog.Web.Mvc.Models;
+namespace App.Web.Mvc.Models;
 public class MenuItem
 {
     public string Title { get; set; }

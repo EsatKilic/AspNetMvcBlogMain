@@ -1,5 +1,4 @@
-﻿using System;
-namespace Blog.Web.Mvc.Data.Entity.Abstract
+﻿namespace App.Data.Entity.Abstract
 {
     public abstract class AuditEntity
     {
@@ -8,4 +7,3 @@ namespace Blog.Web.Mvc.Data.Entity.Abstract
         public DateTime? DeletedAt { get; set; }
     }
 }
-

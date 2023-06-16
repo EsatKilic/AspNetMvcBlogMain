@@ -1,16 +1,18 @@
-﻿using Blog.Web.Mvc.Data;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using App.Data;
 
-namespace Blog.Web.Mvc.Controllers
+namespace App.Web.Mvc.Controllers
 {
     public class BlogController : Controller
     {
         private readonly AppDbContext _db;
+        //private readonly PostService _ps;
 
-        public BlogController(AppDbContext db)
+        public BlogController(AppDbContext db )
         {
             _db = db;
+           
         }
 
         public IActionResult Search(string query, int page = 1)

@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Mail;
 
-namespace Blog.Web.Mvc
+namespace App.Web.Mvc
 {
     public class EmailService
     {

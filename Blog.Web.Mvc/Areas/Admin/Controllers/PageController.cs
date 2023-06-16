@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Blog.Web.Mvc.Areas.Admin.Controllers
+namespace App.Web.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class PageController : Controller

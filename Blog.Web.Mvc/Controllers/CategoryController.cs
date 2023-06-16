@@ -1,17 +1,28 @@
-﻿using Blog.Web.Mvc.Data;
+﻿using App.Data;
+using App.Data.Entity;
+using App.Web.Mvc.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Umbraco.Core.Models.Membership;
+using Umbraco.Core.Services.Implement;
 
 
-namespace Blog.Web.Mvc.Controllers
+namespace App.Web.Mvc.Controllers
 {
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;
+        //private readonly CategoryService _cs;
+        //private readonly PostService _ps;
 
         public CategoryController(AppDbContext context)
         {
             _context = context;
+            
         }
 
         [Route("/category/{slug}", Name = "Category")]

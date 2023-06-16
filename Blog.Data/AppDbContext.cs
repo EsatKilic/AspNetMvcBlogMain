@@ -1,8 +1,7 @@
-﻿using Blog.Web.Mvc.Data.Entity;
+﻿using App.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Web.Mvc.Data
-
+namespace App.Data
 {
     public class AppDbContext : DbContext
     {

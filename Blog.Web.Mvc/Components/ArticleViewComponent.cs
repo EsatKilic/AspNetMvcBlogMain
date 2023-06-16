@@ -1,8 +1,8 @@
-﻿using Blog.Web.Mvc.Data;
+﻿using App.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Web.Mvc.Components;
+namespace App.Web.Mvc.Components;
 
 public class ArticleViewComponent : ViewComponent
 {

@@ -1,9 +1,7 @@
-﻿using Blog.Web.Mvc.Data;
-using Blog.Web.Mvc.Data.Entity;
+﻿using App.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Web.Mvc.Controllers
+namespace App.Web.Mvc.Controllers
 {
     public class PageController : Controller
     {

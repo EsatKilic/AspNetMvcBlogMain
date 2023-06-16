@@ -1,4 +1,5 @@
-﻿@model Post
+﻿@using System.Security.Claims;
+@model Post
 @{
     ViewData["Title"] = "Blog - Detail";
 }
@@ -180,7 +181,7 @@
 
                                     <div class="media-body ml-4">
                                         <h4 class="mb-0"> @item.User.Name </h4>
-                                        <span class="date-comm font-sm text-capitalize text-color"><i class="ti-time mr-2"></i> @item.CreatedAt </span>
+                                        <span class="date-comm font-sm text-capitalize text-color"><i class="ti-time mr-2"></i> @item. </span>
 
                                         <div class="comment-content mt-3">
                                             <p>@item.Comment</p>
@@ -203,12 +204,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" type="text" name="name" id="name" placeholder="Name:">
+                                <input class="form-control" type="text" value="@Context.User.Identity.Name" name="name" id="name" placeholder="Name:">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" type="text" name="mail" id="mail" placeholder="Email:">
+                                <input class="form-control" value="@Context.User.FindFirstValue(ClaimTypes.Email)" type="text" name="mail" id="mail" placeholder="Email:">
                             </div>
                         </div>
                     </div>

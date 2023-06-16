@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Blog.Web.Mvc.Models;
+namespace App.Web.Mvc.Models;
 
 public class ForgotPasswordViewModel
 {

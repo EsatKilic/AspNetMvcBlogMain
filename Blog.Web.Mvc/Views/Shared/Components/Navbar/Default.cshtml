@@ -25,6 +25,7 @@
                                     Kategoriler
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                 
                                     @foreach (var item in Model.Categories)
                                     {
                                         <a class="dropdown-item" asp-route="Category" asp-route-slug="@item.Slug">@item.Name</a>
@@ -48,10 +49,19 @@
                                     Auth
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                @if (Context.User.Identity.Name == null)
+                                {
+                                      
                                     <a class="dropdown-item" asp-controller="Auth" asp-action="Login">Login</a>
                                     <a class="dropdown-item" asp-controller="Auth" asp-action="Register">Register</a>
                                     <a class="dropdown-item" asp-controller="Auth" asp-action="ForgotPassword">ForgotPassword</a>
+                                   
+                                } else
+                                {
+                                    <a class="dropdown-item" asp-controller="Auth" asp-action="Logout">Logout</a>
+                                }
                                 </div>
+                             
                             </li>
 
 
@@ -62,7 +72,13 @@
                             <li class="list-inline-item"><a href="#"><i class="ti-twitter"></i></a></li>
                             <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
                             <li class="list-inline-item"><a href="#"><i class="ti-pinterest"></i></a></li>
+                           
                         </ul>
+                        @if(@Context.User.Identity.Name != null) 
+                            { 
+                                <p>Hoş geldiniz</p>
+                                @Context.User.Identity.Name
+                            }
                         <div class="text-right search d-none d-lg-block">
                             <div class="search_toggle"><i class="ti-search"></i></div>
                         </div>

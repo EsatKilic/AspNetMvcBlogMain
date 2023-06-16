@@ -1,23 +1,30 @@
-﻿using Blog.Web.Mvc.Data;
-using Blog.Web.Mvc.Data.Entity;
-using Blog.Web.Mvc.Models;
+﻿using App.Business.Services;
+using App.Data;
+using App.Data.Entity;
+using App.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration.UserSecrets;
 using System.Security.Claims;
+//using Umbraco.Core.Models.Membership;
+//using Umbraco.Core.Services.Implement;
 
-namespace Blog.Web.Mvc.Controllers
+namespace App.Web.Mvc.Controllers
 {
     public class AuthController : Controller
     {
         private readonly AppDbContext _context;
         private readonly EmailService _emailService;
+        private readonly UserService _userService;
 
 
-        public AuthController(AppDbContext context, EmailService emailService)
+        public AuthController(AppDbContext context, EmailService emailService, UserService userService)
         {
             _context = context;
+            _emailService = emailService;
+            _userService = userService;
+           // _userService = userService;
 
         }
         public IActionResult Register() => View();
@@ -34,7 +41,7 @@ namespace Blog.Web.Mvc.Controllers
                     return View(model);
                 }
 
-                var newUser = new User()
+                var newUser = new App.Data.Entity.User()
                 {
                     Email = model.EmailAddress,
                     Password = model.Password,
@@ -56,7 +63,6 @@ namespace Blog.Web.Mvc.Controllers
         }
 
         public IActionResult Login() => View();
-
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {

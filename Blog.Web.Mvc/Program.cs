@@ -1,9 +1,10 @@
-using Blog.Web.Mvc.Data;
+using App.Business.Services;
+using App.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Blog.Web.Mvc
+namespace App.Web.Mvc
 {
     public class Program
     {
@@ -43,6 +44,10 @@ namespace Blog.Web.Mvc
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<EmailService, EmailService>();
+            builder.Services.AddScoped<UserService, UserService>();
+  
+
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             var app = builder.Build();
 
@@ -72,6 +77,7 @@ namespace Blog.Web.Mvc
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

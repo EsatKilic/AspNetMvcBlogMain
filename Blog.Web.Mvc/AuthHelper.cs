@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Blog.Web.Mvc
+namespace App.Web.Mvc
 {
     public class AuthHelper
     {

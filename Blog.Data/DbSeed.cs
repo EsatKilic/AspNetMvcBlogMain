@@ -1,7 +1,7 @@
-﻿using Blog.Web.Mvc.Data.Entity;
+﻿using App.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Web.Mvc.Data
+namespace App.Data
 {
     public class DbSeed
     {
@@ -147,6 +147,11 @@ namespace Blog.Web.Mvc.Data
                 new() { Id = 6 , Email = "kerem@gmail.com", Password ="062", Name ="kerem", City="Sivas", Phone = "+90542" },
             });
 
+        }
+
+        public static void Seed(AppDbContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 }

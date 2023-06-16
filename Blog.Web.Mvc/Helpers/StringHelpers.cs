@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Blog.Web.Mvc.Helpers
+namespace App.Web.Mvc.Helpers
 {
     public static class StringHelpers
     {

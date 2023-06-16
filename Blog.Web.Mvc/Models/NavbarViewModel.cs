@@ -1,6 +1,6 @@
-﻿using Blog.Web.Mvc.Data.Entity;
+﻿using App.Data.Entity;
 
-namespace Blog.Web.Mvc.Models;
+namespace App.Web.Mvc.Models;
 
 public class NavbarViewModel
 {
