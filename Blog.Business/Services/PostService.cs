@@ -40,7 +40,7 @@ namespace App.Business.Services
             _db.SaveChanges();
         }
 
-        public void Update(Post post)
+        public void Update(int id, Post post)
         {
             var oldPost = _db.Posts.FirstOrDefault(p => p.Id == post.Id);
             if (oldPost != null)

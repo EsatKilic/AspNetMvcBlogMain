@@ -1,0 +1,13 @@
+﻿@using App.Data.Entity;
+@model Post
+
+<h1>@Model.Title</h1>
+<h2>@Model.User.Name</h2> <h3>@Model.CreatedAt</h3>
+<hr />
+@foreach(Category c in Model.Categories)
+{
+<h4>@c.Name</h4>
+    
+}
+<h5>@Model.Content</h5>
+<a asp-action="Index" class="btn btn-secondary">Go Back</a>
